@@ -1,4 +1,6 @@
-var log = (...args) => { console.log('[LOGGING script.js]', args)}
+var log = (...args) => {
+  console.log("[LOGGING script.js]", args);
+};
 
 // Update counnt
 var setCountElement = (data) => {
@@ -10,9 +12,13 @@ var setCountElement = (data) => {
 
 // Binding with button
 var getURL = function (url, inc) {
-  fetch(`${url}/${count + inc}`)
-    .then((response) => response.json())
-    .then(setCountElement);
+  if (count + inc < 0) {
+    return;
+  } else {
+    fetch(`${url}/${count + inc}`)
+      .then((response) => response.json())
+      .then(setCountElement);
+  }
 };
 
 // Main program start here
